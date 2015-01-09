@@ -6,4 +6,8 @@ class Exchange
 		@barrelstock = []
 		1000.times { @barrelstock << Barrel.new}
 	end
+
+	def priceup
+		barrelstock.each { |x| x.price = 50 }
+	end
 end

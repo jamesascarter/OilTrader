@@ -10,8 +10,9 @@ describe Exchange do
 		expect(exchange.barrelstock.count).to eq(1000)
 	end
 
-	it 'should be able to create a price between 0 and 100' do
-		
+	it 'should be able to apply a price between 0 and 100' do
+		exchange.priceup
+		expect(exchange.barrelstock[0].price).to be_between(0, 100)
 	end
 
 
