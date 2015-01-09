@@ -4,10 +4,6 @@ class Exchange
 
 	def initialize
 		@barrelstock = []
+		1000.times { @barrelstock << Barrel.new}
 	end
-
-	def stock(barrel)
-		1000.times { @barrelstock << barrel = Barrel.new}
-	end
-
 end
