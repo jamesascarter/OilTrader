@@ -17,9 +17,10 @@ class Baron
 		exchange.barrelstock.each do |barrel| 
 			if (barrel.price == quoted_price)
 				self.barrels << barrel
+			else
+				raise "this price is not available in the market"
+			end
 		end
-		end
-
 	end
 
 end

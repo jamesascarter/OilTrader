@@ -28,4 +28,10 @@ describe Baron do
   	baron.buy(exchange, 50)
   	expect(baron.barrels.count).to eq(1)
   end
+
+  it 'should raise an error if quoted_price is not available' do
+  	expect( lambda { baron.buy(exchange, 20) }).to raise_error("this price is not available in the market")
+  end
+
+  it ''
 end
