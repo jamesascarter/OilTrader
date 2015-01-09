@@ -1,26 +1,26 @@
 class Baron
 
-	attr_reader :name
-	attr_accessor :capital, :barrels
+  attr_reader :name
+  attr_accessor :capital, :barrels
 
-	def initialize(name)
-		@name = name
-		@capital = 10000
-		@barrels = []
-	end
+  def initialize(name)
+    @name = name
+    @capital = 10000
+    @barrels = []
+  end
 
-	def check_price(exchange)
-		exchange.quote
-	end
+  def check_price(exchange)
+    exchange.quote
+  end
 
-	def buy(exchange, quoted_price)
-		exchange.barrelstock.each do |barrel| 
-			if (barrel.price == quoted_price)
-				self.barrels << barrel
-			else
-				raise "this price is not available in the market"
-			end
-		end
-	end
+  def buy(exchange, quoted_price)
+    exchange.barrelstock.each do |barrel| 
+      if (barrel.price == quoted_price)
+        self.barrels << barrel
+      else
+        raise "this price is not available in the market"
+      end
+    end
+  end
 
 end
