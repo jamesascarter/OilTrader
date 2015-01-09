@@ -5,9 +5,20 @@ class Exchange
 	def initialize
 		@barrelstock = []
 		1000.times { @barrelstock << Barrel.new}
+		self.apply_market_price
 	end
 
-	def priceup
-		barrelstock.each { |x| x.price = 50 }
+	def apply_market_price
+		barrelstock.each { |x| x.price = market_pricer }
 	end
+
+	def market_pricer
+		Random.rand(100 - 0)
+	end
+
+	def quote
+		barrelstock[0].price
+	end 
+
+
 end

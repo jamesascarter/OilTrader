@@ -9,4 +9,17 @@ class Baron
 		@barrels = []
 	end
 
+	def check_price(exchange)
+		exchange.quote
+	end
+
+	def buy(exchange, quoted_price)
+		exchange.barrelstock.each do |barrel| 
+			if (barrel.price == quoted_price)
+				self.barrels << barrel
+		end
+		end
+
+	end
+
 end
