@@ -20,5 +20,8 @@ class Exchange
     barrelstock[0].price
   end 
 
+  def lose_barrel(quoted_price)
+    barrelstock.delete_if {|barrel| barrel.price == quoted_price}
+  end
 
 end

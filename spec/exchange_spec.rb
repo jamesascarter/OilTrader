@@ -3,7 +3,7 @@ require 'exchange'
 describe Exchange do
 
   let (:exchange) {Exchange.new}
-  let (:barrel) {double :barrel}
+  let (:barrel) {double :barrel, price: 50}
 
 
   it 'should be able to fill up with barrels' do
@@ -21,6 +21,11 @@ describe Exchange do
   it 'should be able to provide a quote' do
     allow(exchange).to receive(:quote) { 5 }
     expect(exchange.quote).to eq(5) 
+  end
+
+  it 'should be able to remove a barrel from the exchange' do
+    exchange.lose_barrel(50)
+    expect(exchange.barrelstock).not_to eq(1000)
   end
 
 

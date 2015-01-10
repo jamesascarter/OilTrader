@@ -24,18 +24,15 @@ describe Baron do
   end
 
   it 'should be able to buy a barrel of oil' do
-    allow(exchange).to receive(:quote) { 50 }
+    allow(exchange).to receive(:lose_barrel)
     baron.buy(exchange, 50)
     expect(baron.barrels.count).to eq(1)
   end
 
-  it 'should raise an error if quoted_price is not available' do
-    expect( lambda { baron.buy(exchange, 20) }).to raise_error("this price is not available in the market")
+  it 'should be charged for a barrel of oil' do
+    allow(exchange).to receive(:lose_barrel)
+    baron.buy(exchange, 50)
+    expect(baron.capital).to eq(9950)
   end
 
-  it 'should remove a barrel of oil from the exchange when one is bought' do
-    allow(exchange).to receive(:quote) { 50 }
-    baron.buy(exchange, 50)
-    expect(exchange)
-  end
 end
