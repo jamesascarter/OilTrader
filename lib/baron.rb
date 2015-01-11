@@ -27,8 +27,14 @@ class Baron
     self.barrels.each_with_index do |barrel, index|
       if index < quantity
         exchange.barrelstock << barrel
+        self.capital += quoted_price
       end
     end
+    self.remove_barrels(quantity)
+  end
+
+  def remove_barrels(quantity)
+    self.barrels.slice!(0, quantity) 
   end
 
 end

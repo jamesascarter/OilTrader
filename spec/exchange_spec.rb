@@ -29,11 +29,6 @@ describe Exchange do
     expect(exchange.barrelstock.count).to be < 1000
   end
 
-  xit 'should be able to gain a barrel froma  baron' do
-    exchange.gain_barrel(50)
-    expect(exchange.barrelstock.count).to be > 1000
-  end
-
   it 'should be able to find out how many barrels are in the market at what price' do
     exchange.barrelstock << barrel1
     expect(exchange.quantity_for_sale(110).count).to eq(1)

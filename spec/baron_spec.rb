@@ -3,8 +3,9 @@ require 'baron'
 describe Baron do
 
   let(:baron) {Baron.new('jimmie')}
-  let(:exchange) {double :exchange, barrelstock: [barrel]}
+  let(:exchange) {double :exchange, barrelstock: [barrel, barrel1]}
   let(:barrel) {double :barrel, price: 50}
+  let(:barrel1) {double :barrel, price: 70}
 
   it "should have a name" do
     expect(baron.name).to eq('jimmie')
@@ -49,7 +50,17 @@ describe Baron do
 
   end
 
-  it 'should be able to '
+  it 'should add price of barrel to the barons capital' do
+    allow(exchange).to receive(:lose_barrel)
+    baron.buy(exchange, 50)
+    expect{baron.sell(exchange, 70, 1)}.to change{baron.capital}.by(70)
+  end
+
+  it 'should be able to lose a barrel(on sale)' do
+    allow(exchange).to receive(:lose_barrel)
+    baron.buy(exchange, 50)
+    expect{baron.remove_barrels(1)}.to change{baron.barrels.count}.by(-1)
+  end
 
 
 end
