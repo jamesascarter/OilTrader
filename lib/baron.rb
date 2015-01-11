@@ -1,16 +1,19 @@
 class Baron
 
   attr_reader :name
-  attr_accessor :capital, :barrels
+  attr_accessor :capital, :barrels, :price_checks
 
   def initialize(name)
     @name = name
     @capital = 10000
     @barrels = []
+    @price_checks = 10
   end
 
   def check_price(exchange)
+    check_used
     exchange.quote
+
   end
 
   def buy(exchange, quoted_price)
@@ -35,6 +38,10 @@ class Baron
 
   def remove_barrels(quantity)
     self.barrels.slice!(0, quantity) 
+  end
+
+  def check_used
+    self.price_checks -= 1
   end
 
 end
