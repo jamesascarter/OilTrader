@@ -23,4 +23,12 @@ class Baron
     exchange.lose_barrel(quoted_price)
   end
 
+  def sell(exchange, quoted_price, quantity)
+    self.barrels.each_with_index do |barrel, index|
+      if index < quantity
+        exchange.barrelstock << barrel
+      end
+    end
+  end
+
 end

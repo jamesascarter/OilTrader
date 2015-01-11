@@ -42,5 +42,14 @@ describe Baron do
     expect(baron.barrels.count).to eq(0)
   end
 
+  it 'should be able to sell a barrel of oil to the exchange' do
+    allow(exchange).to receive(:lose_barrel)
+    baron.buy(exchange, 50)
+    expect{baron.sell(exchange, 50, 1)}.to change{exchange.barrelstock.count}.by(1)
+
+  end
+
+  it 'should be able to '
+
 
 end
