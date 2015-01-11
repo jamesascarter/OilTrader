@@ -35,4 +35,12 @@ describe Baron do
     expect(baron.capital).to eq(9950)
   end
 
+  it 'should only allow baron to buy oil if it has the required capital' do
+    allow(exchange).to receive(:lose_barrel)
+    baron.capital = 0
+    baron.buy(exchange, 50)
+    expect(baron.barrels.count).to eq(0)
+  end
+
+
 end

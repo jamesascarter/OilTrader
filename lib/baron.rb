@@ -15,11 +15,12 @@ class Baron
 
   def buy(exchange, quoted_price)
     exchange.barrelstock.each do |barrel| 
-      if barrel.price == quoted_price
+      if barrel.price == quoted_price && self.capital >= barrel.price
         self.barrels << barrel
         self.capital -= barrel.price
       end
     end
     exchange.lose_barrel(quoted_price)
   end
+
 end

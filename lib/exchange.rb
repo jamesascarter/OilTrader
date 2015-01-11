@@ -17,11 +17,16 @@ class Exchange
   end
 
   def quote
-    barrelstock[0].price
+    barrelstock[market_pricer].price
   end 
 
   def lose_barrel(quoted_price)
     barrelstock.delete_if {|barrel| barrel.price == quoted_price}
   end
+
+  def quantity_for_sale(price)
+    barrelstock.select{|barrel| barrel.price == price}
+  end
+
 
 end
