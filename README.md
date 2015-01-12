@@ -6,13 +6,12 @@ The game starts a user (or baron) with capital of 10,000 with which they can buy
 
 
 ### Tech
+
 Ruby
 Rspec
 
 
 ### How to use
-
-
 
 Clone this repo:
 ```sh
