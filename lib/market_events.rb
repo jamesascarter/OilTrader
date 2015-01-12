@@ -1,4 +1,7 @@
-module market_event
+module Market_events
 
+	def hi
+		1
+	end
 
 end
