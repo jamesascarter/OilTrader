@@ -44,7 +44,6 @@ $ James = Baron.new('James')
 
 * Add market crash event. Or just amendments to supply which will affect market prices.
 * Allow user to choose number of barrels it buys. Currently it must buy all barrels at the reuired price.
-* 
 * Use sinatra/heroku to make a web app
 * Use database postgresql to store scores/player names.
 

@@ -46,6 +46,7 @@ class Baron
 
   def sell_at_cost
     self.barrels.each{ |barrel| self.capital += barrel.price}
+    self.remove_barrels(self.barrels.length)
   end
 
 end

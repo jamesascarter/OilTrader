@@ -85,6 +85,11 @@ describe Baron do
       expect{baron.sell_at_cost}.to change{baron.capital}.by(50)
     end
 
+    it 'will remove remianing barrels from baron' do
+      baron.buy(exchange, 50)
+      expect{baron.sell_at_cost}.to change{baron.barrels.length}.by(-1)
+    end
+
   end
 
 end
