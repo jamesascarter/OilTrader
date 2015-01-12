@@ -67,7 +67,7 @@ describe Baron do
   context 'has rules to abide by in the game such as' do
 
     it 'a set number of price checks' do
-      expect(baron.price_checks).to eq(10)
+      expect(baron.price_checks).to eq(20)
     end
 
     it 'price check number counts down' do

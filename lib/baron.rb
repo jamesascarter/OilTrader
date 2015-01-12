@@ -7,7 +7,7 @@ class Baron
     @name = name
     @capital = 10000
     @barrels = []
-    @price_checks = 10
+    @price_checks = 20
   end
 
   def check_price(exchange)
