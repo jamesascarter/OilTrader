@@ -11,9 +11,9 @@ class Baron
   end
 
   def check_price(exchange)
+    raise 'No more turns. Game over!' if self.price_checks == 0
     check_used
     exchange.quote
-
   end
 
   def buy(exchange, quoted_price)
@@ -42,6 +42,10 @@ class Baron
 
   def check_used
     self.price_checks -= 1
+  end
+
+  def sell_at_cost
+    self.barrels.each{ |barrel| self.capital += barrel.price}
   end
 
 end

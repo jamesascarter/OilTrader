@@ -3,7 +3,7 @@ require 'baron'
 describe Baron do
 
   let(:baron) {Baron.new('jimmie')}
-  let(:exchange) {double :exchange, barrelstock: [barrel, barrel1]}
+  let(:exchange) {double :exchange, barrelstock: [barrel, barrel1], lose_barrel: nil}
   let(:barrel) {double :barrel, price: 50}
   let(:barrel1) {double :barrel, price: 70}
 
@@ -31,38 +31,32 @@ describe Baron do
     end
 
     it 'buy a barrel of oil' do
-      allow(exchange).to receive(:lose_barrel)
       baron.buy(exchange, 50)
       expect(baron.barrels.count).to eq(1)
     end
 
     it 'be charged for a barrel of oil' do
-      allow(exchange).to receive(:lose_barrel)
       baron.buy(exchange, 50)
       expect(baron.capital).to eq(9950)
     end
 
     it 'buy only when has sufficient capital' do
-      allow(exchange).to receive(:lose_barrel)
       baron.capital = 0
       baron.buy(exchange, 50)
       expect(baron.barrels.count).to eq(0)
     end
 
     it 'sell a barrel of oil to the exchange' do
-      allow(exchange).to receive(:lose_barrel)
       baron.buy(exchange, 50)
       expect{baron.sell(exchange, 50, 1)}.to change{exchange.barrelstock.count}.by(1)
     end
 
     it 'add price of barrel to the barons capital' do
-      allow(exchange).to receive(:lose_barrel)
       baron.buy(exchange, 50)
       expect{baron.sell(exchange, 70, 1)}.to change{baron.capital}.by(70)
     end
 
     it 'lose a barrel(on sale)' do
-      allow(exchange).to receive(:lose_barrel)
       baron.buy(exchange, 50)
       expect{baron.remove_barrels(1)}.to change{baron.barrels.count}.by(-1)
     end
@@ -81,9 +75,16 @@ describe Baron do
       expect{baron.check_price(exchange)}.to change{baron.price_checks}.by(-1)
     end
 
+    it 'will raise a game over error if user has no checks left' do
+      baron.price_checks = 0
+      expect(lambda{baron.check_price(exchange)}).to raise_error('No more turns. Game over!')
+    end
+
+    it 'will sell remaining barrels to exchange at cost' do
+      baron.buy(exchange, 50)
+      expect{baron.sell_at_cost}.to change{baron.capital}.by(50)
+    end
+
   end
-
-
-
 
 end
