@@ -1,4 +1,8 @@
+require_relative './market_events'
+
 class Exchange
+
+  include Market_events
 
   attr_accessor :barrelstock
 
@@ -9,7 +13,7 @@ class Exchange
   end
 
   def apply_market_price
-    barrelstock.each { |x| x.price = market_pricer }
+    barrelstock.each { |barrel| barrel.price = market_pricer }
   end
 
   def market_pricer
@@ -27,6 +31,12 @@ class Exchange
   def quantity_for_sale(price)
     barrelstock.select{|barrel| barrel.price == price}
   end
+
+  def market_eventer
+    if market_conditions = "crash"
+      barrelstock.each {|barrel| barrel.price *= 0.5}
+    end
+  end 
 
 
 end

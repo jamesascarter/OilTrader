@@ -35,6 +35,13 @@ describe Exchange do
       expect(exchange.quantity_for_sale(110).count).to eq(1)
     end
 
+    it 'change the price under crash market conditions' do
+      allow(exchange).to receive(:market_conditions) {"crash"}
+      exchange.barrelstock[0].price = 10
+      expect{exchange.market_eventer}.to change{exchange.barrelstock[0].price}.by(-5)
+
+    end
+
   end
 
 end
