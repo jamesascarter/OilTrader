@@ -21,6 +21,7 @@ class Exchange
   end
 
   def quote
+    self.market_eventer
     barrelstock[market_pricer].price
   end 
 
@@ -33,9 +34,14 @@ class Exchange
   end
 
   def market_eventer
-    if market_conditions = "crash"
+    if market_conditions == "crash"
       barrelstock.each {|barrel| barrel.price *= 0.5}
+    elsif market_conditions == "peak"
+      barrelstock.each {|barrel| barrel.price *= 2}
+    else
+      barrelstock.each {|barrel| barrel.price *= 1}
     end
+
   end 
 
 
