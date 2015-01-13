@@ -39,7 +39,6 @@ describe Exchange do
       allow(exchange).to receive(:market_conditions) {"crash"}
       exchange.barrelstock[0].price = 10
       expect{exchange.market_eventer}.to change{exchange.barrelstock[0].price}.by(-5)
-
     end
 
   end
