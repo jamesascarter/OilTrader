@@ -1,4 +1,4 @@
-require 'baron'
+require './app/models/baron'
 
 describe Baron do
 

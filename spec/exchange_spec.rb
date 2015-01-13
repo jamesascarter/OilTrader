@@ -1,4 +1,4 @@
-require 'exchange'
+require './app/models/exchange'
 
 describe Exchange do
 

@@ -1,4 +1,4 @@
-require_relative './market_events'
+require_relative 'market_events'
 
 class Exchange
 

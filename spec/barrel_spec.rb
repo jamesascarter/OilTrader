@@ -1,4 +1,4 @@
-require 'barrel'
+require './app/models/barrel'
 
 describe Barrel do
 

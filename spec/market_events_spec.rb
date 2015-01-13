@@ -1,4 +1,4 @@
-require 'market_events'
+require './app/models/market_events'
 
 describe Market_events do
   let(:extended_class) { Class.new { extend Market_events } }
