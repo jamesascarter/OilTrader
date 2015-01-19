@@ -1,11 +1,9 @@
 require 'sinatra'
+require 'sinatra/partial'
 
-class OilTrader < Sinatra::Base
-
-set :views, Proc.new { File.join(root, "./app/" "views") }
+set :partial_template_engine, :erb
+set :public_folder, Proc.new { File.join(root, '..', 'public') }
 
 get '/' do
-	'Hello World'
-end
-
+  erb :index
 end
