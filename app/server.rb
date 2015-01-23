@@ -10,6 +10,6 @@ end
 
 post '/new_baron' do
 
-	baron = Baron.new(params[:name])
+baron = Baron.new(params[:name])
 	
 end
