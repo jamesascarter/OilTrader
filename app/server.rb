@@ -1,15 +1,12 @@
 require 'sinatra'
-require 'sinatra/partial'
+require 'sinatra/base'
 
 set :partial_template_engine, :erb
-set :public_folder, Proc.new { File.join(root, '..', 'public') }
 
 get '/' do
-  erb :index
+  'hello word'
 end
 
 post '/new_baron' do
-
-baron = Baron.new(params[:name])
-	
+  baron = Baron.new(params[:name])
 end
