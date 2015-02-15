@@ -2,7 +2,8 @@ Given(/^I am on the homepage$/) do
   visit '/'
 end
 
-Then(/^I should see "(.*?)"$/) do |arg1|
-  pending # express the regexp above with the code you wish you had
+Then(/^I should see "(.*?)"$/) do |text|
+  save_and_open_page
+  expect(page).to have_content(text)
 end
 

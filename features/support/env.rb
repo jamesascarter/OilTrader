@@ -9,13 +9,3 @@ require 'capybara/cucumber'
 require 'rspec'
 
 Capybara.app = Sinatra::Application
-
-class RPSWorld
-  include Capybara::DSL
-  include RSpec::Expectations
-  include RSpec::Matchers
-end
-
-World do
-  RPSWorld.new
-end

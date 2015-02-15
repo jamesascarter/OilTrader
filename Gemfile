@@ -7,4 +7,5 @@ gem 'launchy'
 gem 'capybara'
 gem 'rack'
 gem 'sinatra-partial'
+gem 'rspec'
 
