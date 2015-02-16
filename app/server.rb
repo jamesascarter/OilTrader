@@ -4,9 +4,9 @@ require 'sinatra/base'
 set :partial_template_engine, :erb
 
 get '/' do
-  'hello word'
+  erb :index
 end
 
-post '/new_baron' do
-  baron = Baron.new(params[:name])
-end
+# post '/new_baron' do
+#   baron = Baron.new(params[:name])
+# end
