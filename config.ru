@@ -1,3 +1,3 @@
 require './app/server'
 
-run OilTrader
+run Sinatra::Application

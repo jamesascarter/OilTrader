@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'sinatra/base'
+
 require './app/models/baron'
+
 set :partial_template_engine, :erb
 
 get '/' do
